@@ -7,18 +7,17 @@ WORKDIR /app
 # Copy go.mod and go.sum files to the working directory
 COPY go.mod go.sum ./
 
-
-# Download dependencies
-RUN go mod download
-
 # Add the new dependency
-RUN go install github.com/datadog/orchestrion/v0.6.0
+RUN go get github.com/datadog/orchestrion@v0.6.0
+RUN go install github.com/datadog/orchestrion@v0.6.0
 
-
-RUN go mod tidy
+# Copy the orchestrion binary to the /app directory and set it as executable
+RUN cp /go/bin/orchestrion /app/
+RUN chmod +x /app/orchestrion
 
 # Activate Orchestrion
 RUN orchestrion -w ./
+RUN go mod tidy
 
 # Copy the entire application
 COPY . .
