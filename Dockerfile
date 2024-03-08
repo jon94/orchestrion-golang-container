@@ -16,7 +16,7 @@ RUN cp /go/bin/orchestrion /app/
 RUN chmod +x /app/orchestrion
 
 # Activate Orchestrion
-RUN orchestrion -w ./
+RUN /app/orchestrion -w ./
 RUN go mod tidy
 
 # Copy the entire application
