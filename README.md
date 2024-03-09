@@ -9,7 +9,8 @@
 ## Intro
 - This code base shows how you can make use of orchestrion on the Dockerfile layer to help auto instrument Golang at build time. 
 - Orchestrion supports some library for [Auto Instrumentation](https://github.com/DataDog/orchestrion?tab=readme-ov-file#supported-libraries).
-- For libraries that are not in the list, you will be able to annotate your code files with //dd:span my:tag where it represents //dd:span <custom span tag>. 
+- You are still expected to go through your golang codes to annotate your codes for this to work.
+  - For libraries that are not in the list, you will be able to annotate your code files with //dd:span my:tag where it represents //dd:span <custom span tag>. 
 
 ## Inspect main.go
 - The outcome of the orchestrion instrumentation is that it should have 3 spans in the flamegraph. 
