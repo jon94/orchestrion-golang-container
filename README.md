@@ -37,3 +37,7 @@ docker compose up -d --force-recreate --no-deps --build
 ```
 docker compose down
 ```
+
+## Credits
+- Sin Ta: For figuring out how to do it on Dockerfile
+- Sho Uchida: For bumping orchestrion
