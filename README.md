@@ -20,3 +20,20 @@
 
 ## How it looks like in Datadog APM FlameGraph after orchestrion
 ![image](https://github.com/jon94/orchestrion-golang-container/assets/40360784/3444c5e1-711d-459e-9f7a-b7066b093a9b)
+
+## See it in action
+1. Clone the repo
+```
+git clone https://github.com/jon94/orchestrion-golang-container.git
+```
+2. Replace the Datadog API Key in docker-compose.yaml
+3. Set ENV Variable DD_SITE if required (depending on your data centre with Datadog)
+4. Run docker compose
+```
+docker compose up -d --force-recreate --no-deps --build
+```
+5. Generate traffic by hitting curl -v http://localhost:5000/
+6. After you are done
+```
+docker compose down
+```
