@@ -39,5 +39,5 @@ docker compose down
 ```
 
 ## Credits
-- Sin Ta: For figuring out how to do it on Dockerfile
-- Sho Uchida: For bumping orchestrion
+- Sin Ta: For debugging the Dockerfile with me to make it work.
+- Sho Uchida: For bumping orchestrion for Golang Auto Instrumentation.
