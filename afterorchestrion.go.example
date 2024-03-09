@@ -1,4 +1,4 @@
-package main
+package afterorchestrion
 
 import (
 	"context"
@@ -7,26 +7,40 @@ import (
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/datadog/orchestrion/instrument"
+	"github.com/datadog/orchestrion/instrument/event"
 )
 
 func main() {
-	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
+	//dd:startinstrument
+	defer instrument.Init()()
+	//dd:endinstrument
+	//dd:startwrap
+	http.HandleFunc("/", instrument.WrapHandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
 		data, err := GetSomeData(request.Context())
 		if err != nil {
 			http.Error(writer, fmt.Sprintf("Failed to get data: %v", err), http.StatusInternalServerError)
 			return
 		}
 		writer.Write(data)
-	})
+	}))
+	//dd:endwrap
 
 	http.ListenAndServe(":8080", nil)
 }
 
 //dd:span my:tag
 func GetSomeData(ctx context.Context) ([]byte, error) {
-	client := &http.Client{
+	//dd:startinstrument
+	ctx = instrument.Report(ctx, event.EventStart, "function-name", "GetSomeData", "my", "tag")
+	defer instrument.Report(ctx, event.EventEnd, "function-name", "GetSomeData", "my", "tag")
+	//dd:endinstrument
+	//dd:startwrap
+	client := instrument.WrapHTTPClient(&http.Client{
 		Timeout: time.Second,
-	}
+	})
+	//dd:endwrap
 	req, err := http.NewRequestWithContext(ctx,
 		http.MethodPost, "http://example.com",
 		strings.NewReader("Hello, World!"))
