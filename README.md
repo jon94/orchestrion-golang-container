@@ -19,3 +19,4 @@
 - This is how the main.go file will look like after orchestrion ["automagically"](https://github.com/DataDog/orchestrion?tab=readme-ov-file#how-it-works) instruments your code.
 
 ## How it looks like in Datadog APM FlameGraph after orchestrion
+![image](https://github.com/jon94/orchestrion-golang-container/assets/40360784/3444c5e1-711d-459e-9f7a-b7066b093a9b)
