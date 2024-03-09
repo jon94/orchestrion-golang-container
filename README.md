@@ -1,6 +1,7 @@
 # orchestrion-golang-container
 
 - [Orchestrion](https://github.com/DataDog/orchestrion) is in private beta with Datadog. CAA 9th March 2024.
+- For more in depth code sample refer [here](https://github.com/DataDog/go-sample-app).
 - There are 2 ways you can use orchestrion to help with instrumentation:
 1. Locally, install orchestrion on machine and run the tool
 2. At build time.
