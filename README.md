@@ -1,13 +1,13 @@
 # orchestrion-golang-container
 
-- [Orchestrion] (https://github.com/DataDog/orchestrion) is in private beta with Datadog. CAA 9th March 2024.
+- [Orchestrion](https://github.com/DataDog/orchestrion) is in private beta with Datadog. CAA 9th March 2024.
 - There are 2 ways you can use orchestrion to help with instrumentation:
 1. Locally, install orchestrion on machine and run the tool
 2. At build time.
 
 ## Intro
 - This code base shows how you can make use of orchestrion on the Dockerfile layer to help auto instrument Golang at build time. 
-- Orchestrion supports some library for [Auto Instrumentation] (https://github.com/DataDog/orchestrion?tab=readme-ov-file#supported-libraries).
+- Orchestrion supports some library for [Auto Instrumentation](https://github.com/DataDog/orchestrion?tab=readme-ov-file#supported-libraries).
 - For libraries that are not in the list, you will be able to annotate your code files with //dd:span my:tag where it represents //dd:span <custom span tag>. 
 
 ## Inspect main.go
